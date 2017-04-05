@@ -4,7 +4,8 @@ import shutil
 import csv
 from datetime import datetime
 
-filePath = '[Enter File Path]'
+filePath = raw_input('Enter file path: ')
+
 f=csv.writer(open('sampledLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
 f.writerow(['oldLocation']+['newLocation'])
 f2=csv.writer(open('unsampledLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
