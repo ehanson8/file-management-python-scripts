@@ -2,7 +2,7 @@ import os
 import csv
 from datetime import datetime
 
-filePath = '[Enter File Path]'
+filePath = raw_input('Enter file path: ')
 
 f=csv.writer(open(filePath+'renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
 f.writerow(['oldLocation']+['newLocation'])
