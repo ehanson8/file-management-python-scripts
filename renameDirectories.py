@@ -2,9 +2,9 @@ import os
 import csv
 from datetime import datetime
 
-filePath = raw_input('Enter file path: ')
+filePath = raw_input('Enter file path (C:/Test/): ')
 
-f=csv.writer(open(filePath+'renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
+f=csv.writer(open('renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
 f.writerow(['oldLocation']+['newLocation'])
 for root, dirs, files in os.walk(filePath, topdown=True):
     for dir in dirs:

@@ -1,7 +1,7 @@
 import csv
 import os
 
-filePath = raw_input('Enter file path: ')
+filePath = raw_input('Enter file path (C:/Test/): ')
 
 f = csv.writer(open('directoryListing.csv', 'wb'))
 f.writerow(['folder'])
