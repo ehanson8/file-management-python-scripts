@@ -17,7 +17,7 @@ Based on the file path entered, extracts the names of all nested folders and wri
 Based on the file path entered, renames all nested folders according to a CSV file named 'FolderNames.csv' with the columns named 'oldFolder' and 'newFolder,' provided that there is a match between the nested folders and the names in the 'oldFolder' column. The script writes a log of all folders that were renamed, including their old name and their new name.
 
 #### [renameFiles.py](/renameFiles.py)
-Based on the file path entered, renames files in the directory according to a specified CSV file with the columns named 'file' and 'newFile,' provided that there is a match between the files and the names in the 'file' column. The script writes a log of all files that were renamed, including their old name and their new name.
+Based on the file path entered, renames files in the directory according to a specified CSV file with the columns named 'file' and 'newFile,' provided that there is a match between the files and the names in the 'file' column. The script writes a log of all files that were renamed, including their old name and their new name. The user will be prompted as to whether they want the file name changes executed or whether they just want log of the expected file name changes.
 
 #### [samplingScript.py](/samplingScript.py)
 Based on the file path entered, selects every 10th file of a folder (after skipping the first file) and moves it over identically named folder in a 'sampled' directory while the skipped files are moved into an identically named folder in an 'unsampled' directory. The script also writes 'sampled' and 'unsampled' logs of all files that were moved, including their old location and their new location.
