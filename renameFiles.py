@@ -2,14 +2,31 @@ import os
 import csv
 from datetime import datetime
 import time
+import argparse
 
-filePath = raw_input('Enter file path (C:/Test/): ')
-nameChangeFile = raw_input('Enter name of CSV with name changes: ')
+parser = argparse.ArgumentParser()
+parser.add_argument('-d', '--directory', help='the directory of the files to be renamed. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--fileName', help='the CSV file of name changes. optional - if not provided, the script will ask for input')
+parser.add_argument('-m', '--makeChanges', help='Enter "true" to if the script should actually rename the files (otherwise, it will only create a log of the expected file name changes). optional - if not provided, the script will to "false"')
+args = parser.parse_args()
+
+if args.directory:
+    directory = args.directory
+else:
+    directory = raw_input('Enter the directory of the files to be renamed: ')
+if args.fileName:
+    fileName = args.fileName
+else:
+    fileName = raw_input('Enter the CSV file of name changes (including \'.csv\'): ')
+if args.makeChanges:
+    makeChanges = args.makeChanges
+else:
+    makeChanges = raw_input('Enter "true" to if the script should actually rename the files (otherwise, it will only create a log of the expected file name changes): ')
 
 startTime = time.time()
 f=csv.writer(open('renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
 f.writerow(['oldFilename']+['newFilename'])
-for root, dirs, files in os.walk(filePath, topdown=True):
+for root, dirs, files in os.walk(directory, topdown=True):
     for file in files:
         with open(nameChangeFile) as csvfile:
             reader = csv.DictReader(csvfile)
@@ -21,8 +38,10 @@ for root, dirs, files in os.walk(filePath, topdown=True):
                     oldPath = os.path.join(root,file)
                     newPath = os.path.join(root,newFilename)
                     f.writerow([oldPath]+[newPath])
-                    #Uncomment the following line to acutally rename files rather than just writing a log file of the changes to be made
-                    #os.rename(oldPath,newPath)
+                    if makeChanges == 'true'
+                        os.rename(oldPath,newPath)
+                    else:
+                        print 'log of expected file name changes created only, no files renamed'
 
 elapsedTime = time.time() - startTime
 m, s = divmod(elapsedTime, 60)

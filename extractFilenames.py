@@ -6,6 +6,7 @@ filePath = raw_input('Enter file path (C:/Test/): ')
 fileExtension = raw_input('Enter file extension: ')
 prefix = raw_input('Enter prefix to be added: ')
 
+startTime = time.time()
 f = csv.writer(open('fileListing.csv', 'wb'))
 f.writerow(['file'] + ['newFile'])
 f2 = csv.writer(open('fullfileListing.csv', 'wb'))
@@ -14,7 +15,7 @@ directories = os.walk(filePath, topdown=True)
 for root, dirs, files in directories:
     for file in files:
         f2.writerow([file])
-        if file[-3:] == fileExtension
+        if file[-3:] == fileExtension:
             itemID = file[0:5]
             newFile = prefix + itemID + fileExtension
             f.writerow([file] + [newFile])
