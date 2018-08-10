@@ -11,6 +11,8 @@ f.writerow(['oldLocation']+['newLocation'])
 f2=csv.writer(open('unsampledLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
 f2.writerow(['oldLocation']+['newLocation'])
 
+print filePath
+
 for root, dirs, files in os.walk(filePath, topdown=True):
     print root
     number = 1
