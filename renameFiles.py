@@ -6,7 +6,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-d', '--directory', help='the directory of the files to be renamed. optional - if not provided, the script will ask for input')
-parser.add_argument('-f', '--fileName', help='the CSV file of name changes. optional - if not provided, the script will ask for input')
+parser.add_argument('-f', '--fileNameCSV', help='the CSV file of name changes. optional - if not provided, the script will ask for input')
 parser.add_argument('-m', '--makeChanges', help='Enter "true" to if the script should actually rename the files (otherwise, it will only create a log of the expected file name changes). optional - if not provided, the script will to "false"')
 args = parser.parse_args()
 
@@ -14,10 +14,10 @@ if args.directory:
     directory = args.directory
 else:
     directory = raw_input('Enter the directory of the files to be renamed: ')
-if args.fileName:
-    fileName = args.fileName
+if args.fileNameCSV:
+    fileNameCSV = args.fileNameCSV
 else:
-    fileName = raw_input('Enter the CSV file of name changes (including \'.csv\'): ')
+    fileNameCSV = raw_input('Enter the CSV file of name changes (including \'.csv\'): ')
 if args.makeChanges:
     makeChanges = args.makeChanges
 else:
@@ -28,7 +28,7 @@ f=csv.writer(open('renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv
 f.writerow(['oldFilename']+['newFilename'])
 for root, dirs, files in os.walk(directory, topdown=True):
     for file in files:
-        with open(nameChangeFile) as csvfile:
+        with open(fileNameCSV) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
                 oldFilename = row['file']
@@ -38,7 +38,7 @@ for root, dirs, files in os.walk(directory, topdown=True):
                     oldPath = os.path.join(root,file)
                     newPath = os.path.join(root,newFilename)
                     f.writerow([oldPath]+[newPath])
-                    if makeChanges == 'true'
+                    if makeChanges == 'true':
                         os.rename(oldPath,newPath)
                     else:
                         print 'log of expected file name changes created only, no files renamed'
