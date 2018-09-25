@@ -1,5 +1,4 @@
 import hashlib
-import csv
 import argparse
 import os
 
@@ -17,12 +16,11 @@ for root, dirs, files in os.walk(directory, topdown=True):
     for file in files:
         fileList.append(os.path.join(root, file).replace('\\','/'))
 
-f=csv.writer(open('fileChecksums.csv', 'wb'))
-f.writerow(['fileName']+['checksum'])
+f = open('checksum.md5','wb')
 
 for file in fileList:
     fileName = file[file.rindex('/')+1:]
     print fileName
     file = open(file,'rb').read()
     checksum = hashlib.md5(file).hexdigest()
-    f.writerow([fileName]+[checksum])
+    f.write(checksum+'  '+fileName+'\n')

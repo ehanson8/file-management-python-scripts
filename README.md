@@ -14,7 +14,7 @@ Based on the file path entered and file extension specified, extracts the names 
 Based on the file path entered, extracts the names of all nested folders and writes them to a CSV file.
 
 #### [generateChecksumsForFilesInDirectory.py](/generateChecksumsForFilesInDirectory.py)
-Based on the file path entered, creates a CSV of all files in that directory and the files' MD5 checksums.
+Based on the file path entered, creates a checksum.md5 file containing the names of all files in that directory and the files' MD5 checksums.
 
 #### [renameDirectories.py](/renameDirectories.py)
 Based on the file path entered, renames all nested folders according to a CSV file named 'FolderNames.csv' with the columns named 'oldFolder' and 'newFolder,' provided that there is a match between the nested folders and the names in the 'oldFolder' column. The script writes a log of all folders that were renamed, including their old name and their new name.
