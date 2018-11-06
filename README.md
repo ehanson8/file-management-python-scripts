@@ -4,7 +4,7 @@ Scripts for moving files and renaming directories
 #### [collapseDirectories.py](/collapseDirectories.py)
 Based on the file path entered, moves any file existing below the eighth level folder in a Linux directory structure (i.e. /media/bitCurator/Storage/Collection/IncomingTransfer/BatchNumber/Disc/JobName) up to the eigth level folder. The script writes a log of all files that were moved, including their old location and their new location.
 
-#### [compareFilesInTwoDirectories.py](/compareFilesInTwoDirectories.py.py)
+#### [compareFilesInTwoDirectories.py](/compareFilesInTwoDirectories.py)
 Based on the primary and secondary file paths entered, produces two CSV files that list the files that exist in one directory but are missing from other directory.
 
 #### [extractFilenames.py](/extractFilenames.py)
