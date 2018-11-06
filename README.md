@@ -10,7 +10,7 @@ Based on the primary and secondary file paths entered, produces two CSV files th
 #### [extractFilenames.py](/extractFilenames.py)
 Based on the file path entered and file extension specified, extracts the names of all relevant files in the directory and writes them to a CSV file. Additionally, you can specify a prefix to be added to the edited file name in the "newFile" column.  Additionally, this script creates a log of all files, whether they have the specified extension or not, in the directory for troubleshooting potential problems.
 
-#### [extractFolderNames.py](/extractFilenames.py)
+#### [extractFolderNames.py](/extractFolderNames.py)
 Based on the file path entered, extracts the names of all nested folders and writes them to a CSV file.
 
 #### [generateChecksumsForFilesInDirectory.py](/generateChecksumsForFilesInDirectory.py)
