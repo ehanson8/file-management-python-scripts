@@ -2,6 +2,7 @@ import os
 import csv
 from datetime import datetime
 import time
+import argparse
 
 parser = argparse.ArgumentParser()
 parser.add_argument('-1', '--primaryFilePath', help='the primary file path (C:/Test/). optional - if not provided, the script will ask for input')
