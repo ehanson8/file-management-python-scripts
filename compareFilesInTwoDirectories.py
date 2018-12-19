@@ -12,16 +12,16 @@ args = parser.parse_args()
 if args.primaryFilePath:
     key = args.primaryFilePath
 else:
-    primaryFilePath = raw_input('Enter primary file path (C:/Test/): ')
+    primaryFilePath = input('Enter primary file path (C:/Test/): ')
 if args.secondaryFilePath:
     key2 = args.secondaryFilePath
 else:
-    secondaryFilePath = raw_input('Enter secondary file path (C:/Test/): ')
+    secondaryFilePath = input('Enter secondary file path (C:/Test/): ')
 
 startTime = time.time()
-f=csv.writer(open('filesMissingFromSecondaryDirectory'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
+f=csv.writer(open('filesMissingFromSecondaryDirectory'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
 f.writerow(['directory']+['file'])
-f2=csv.writer(open('filesMissingFromPrimaryDirectory'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
+f2=csv.writer(open('filesMissingFromPrimaryDirectory'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
 f2.writerow(['directory']+['file'])
 primaryFilePathDict = {}
 for root, dirs, files in os.walk(primaryFilePath, topdown=True):
@@ -47,4 +47,4 @@ for k, v in secondaryFilePathDict.items():
 elapsedTime = time.time() - startTime
 m, s = divmod(elapsedTime, 60)
 h, m = divmod(m, 60)
-print 'Total script run time: ', '%d:%02d:%02d' % (h, m, s)
+print('Total script run time: ', '%d:%02d:%02d' % (h, m, s))

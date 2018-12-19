@@ -3,11 +3,11 @@ import shutil
 import csv
 from datetime import datetime
 
-filePath = raw_input('Enter file path (C:/Test/): ')+'/'
+filePath = input('Enter file path (C:/Test/): ')+'/'
 
-f=csv.writer(open('moveLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
+f=csv.writer(open('moveLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
 f.writerow(['oldLocation']+['newLocation'])
-print filePath
+print(filePath)
 for root, dirs, files in os.walk(filePath, topdown=True):
     for name in files:
         if os.path.join(root, name).count('/') > 8:
@@ -20,8 +20,8 @@ for root, dirs, files in os.walk(filePath, topdown=True):
             level6 = root.index('/', level5)+1
             level7 = root.index('/', level6)+1
             oldLocation = os.path.join(root, name)
-            print oldLocation
+            print(oldLocation)
             newLocation = root[:level7]+name
-            print newLocation
+            print(newLocation)
             shutil.move(oldLocation, newLocation)
 	    f.writerow([oldLocation]+[newLocation])
