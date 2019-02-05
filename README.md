@@ -1,4 +1,7 @@
 # file-management
+
+**Note**: Upgraded to Python 3 in 02/2019. The Python 2.x version can be downloaded [here](https://github.com/ehanson8/file-management/releases)
+
 Scripts for moving files and renaming directories
 
 #### [collapseDirectories.py](/collapseDirectories.py)
