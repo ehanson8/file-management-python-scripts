@@ -5,17 +5,17 @@ import csv
 from datetime import datetime
 import itertools
 
-filePath = raw_input('Enter file path (C:/Test/): ')
+filePath = input('Enter file path (C:/Test/): ')
 
-f=csv.writer(open('sampledLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
+f=csv.writer(open('sampledLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
 f.writerow(['oldLocation']+['newLocation'])
 
 for root, dirs, files in os.walk(filePath, topdown=True):
-    print root
-    print files
+    print(root)
+    print(files)
     sampledFiles = itertools.islice(files, 1, None, 10)
     for sampledFile in sampledFiles:
-        print sampledFile
+        print(sampledFile)
         oldLocation = os.path.join(root, sampledFile)
         project = root[root.rfind('/')+1:]
         root1 = root[:root.rfind('/')]
@@ -24,8 +24,8 @@ for root, dirs, files in os.walk(filePath, topdown=True):
         if not os.path.exists(newLocation):
             os.makedirs(newLocation)
         newLocation = os.path.join(newLocation, sampledFile)
-        print oldLocation
-        print newLocation
+        print(oldLocation)
+        print(newLocation)
         f.writerow([oldLocation]+[newLocation])
         shutil.move(oldLocation, newLocation)
     oldUnsampledLocation = os.path.join(root)

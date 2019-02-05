@@ -9,18 +9,18 @@ args = parser.parse_args()
 if args.directory:
     directory = args.directory
 else:
-    directory = raw_input('Enter directory (C:/Test/): ')
+    directory = input('Enter directory (C:/Test/): ')
 
 fileList = []
 for root, dirs, files in os.walk(directory, topdown=True):
     for file in files:
         fileList.append(os.path.join(root, file).replace('\\','/'))
 
-f = open('checksum.md5','wb')
+f = open('checksum.md5','w')
 
 for file in fileList:
     fileName = file[file.rindex('/')+1:]
-    print fileName
-    file = open(file,'rb').read()
+    print(fileName)
+    file = open(file,'r').read()
     checksum = hashlib.md5(file).hexdigest()
     f.write(checksum+'  '+fileName+'\n')

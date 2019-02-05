@@ -13,23 +13,23 @@ args = parser.parse_args()
 if args.directory:
     directory = args.directory
 else:
-    directory = raw_input('Enter the directory of the files to be renamed: ')
+    directory = input('Enter the directory of the files to be renamed: ')
 if args.fileNameCSV:
     fileNameCSV = args.fileNameCSV
 else:
-    fileNameCSV = raw_input('Enter the CSV file of name changes (including \'.csv\'): ')
+    fileNameCSV = input('Enter the CSV file of name changes (including \'.csv\'): ')
 if args.makeChanges:
     makeChanges = args.makeChanges
 else:
-    makeChanges = raw_input('Enter "true" to if the script should actually rename the directories (otherwise, it will only create a log of the expected directory name changes): ')
+    makeChanges = input('Enter "true" to if the script should actually rename the directories (otherwise, it will only create a log of the expected directory name changes): ')
 
 startTime = time.time()
-print startTime
-f=csv.writer(open('renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','wb'))
+print(startTime)
+f=csv.writer(open('renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
 f.writerow(['oldLocation']+['newLocation'])
 for root, dirs, files in os.walk(directory, topdown=False):
     for dir in dirs :
-        print dir
+        print(dir)
         with open(fileNameCSV) as csvfile:
             reader = csv.DictReader(csvfile)
             for row in reader:
@@ -42,9 +42,9 @@ for root, dirs, files in os.walk(directory, topdown=False):
                     if makeChanges == 'true':
                         os.rename(oldPath,newPath)
                     else:
-                        print 'log of expected directory name changes created only, no files renamed'
+                        print('log of expected directory name changes created only, no files renamed')
 
 elapsedTime = time.time() - startTime
 m, s = divmod(elapsedTime, 60)
 h, m = divmod(m, 60)
-print 'Total script run time: ', '%d:%02d:%02d' % (h, m, s)
+print('Total script run time: ', '%d:%02d:%02d' % (h, m, s))
