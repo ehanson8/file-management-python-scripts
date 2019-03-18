@@ -5,8 +5,8 @@ from datetime import datetime
 
 filePath = input('Enter file path (C:/Test/): ')+'/'
 
-f=csv.writer(open('moveLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
-f.writerow(['oldLocation']+['newLocation'])
+f = csv.writer(open('moveLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
+f.writerow(['oldLocation'] + ['newLocation'])
 print(filePath)
 for root, dirs, files in os.walk(filePath, topdown=True):
     for name in files:
@@ -24,4 +24,4 @@ for root, dirs, files in os.walk(filePath, topdown=True):
             newLocation = root[:level7]+name
             print(newLocation)
             shutil.move(oldLocation, newLocation)
-	    f.writerow([oldLocation]+[newLocation])
+	    f.writerow([oldLocation] + [newLocation])

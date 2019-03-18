@@ -25,8 +25,8 @@ else:
 
 startTime = time.time()
 print(startTime)
-f=csv.writer(open('renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
-f.writerow(['oldLocation']+['newLocation'])
+f = csv.writer(open('renameLog'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
+f.writerow(['oldLocation'] + ['newLocation'])
 for root, dirs, files in os.walk(directory, topdown=False):
     for dir in dirs :
         print(dir)
@@ -38,7 +38,7 @@ for root, dirs, files in os.walk(directory, topdown=False):
                 if dir == oldFolder:
                     oldPath = os.path.join(root,dir)
                     newPath = os.path.join(root,newFolder)
-                    f.writerow([oldPath]+[newPath])
+                    f.writerow([oldPath] + [newPath])
                     if makeChanges == 'true':
                         os.rename(oldPath,newPath)
                     else:
