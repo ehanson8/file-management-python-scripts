@@ -5,8 +5,10 @@ import time
 import argparse
 
 parser = argparse.ArgumentParser()
-parser.add_argument('-1', '--primaryFilePath', help='the primary file path (C:/Test/). optional - if not provided, the script will ask for input')
-parser.add_argument('-2', '--secondaryFilePath', help='the secondary file path (C:/Test/). optional - if not provided, the script will ask for input')
+parser.add_argument('-1', '--primaryFilePath', help='the primary file path \
+(C:/Test/). optional - if not provided, the script will ask for input')
+parser.add_argument('-2', '--secondaryFilePath', help='the secondary file path \
+(C:/Test/). optional - if not provided, the script will ask for input')
 args = parser.parse_args()
 
 if args.primaryFilePath:
@@ -19,10 +21,11 @@ else:
     secondaryFilePath = input('Enter secondary file path (C:/Test/): ')
 
 startTime = time.time()
-f=csv.writer(open('filesMissingFromSecondaryDirectory'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
-f.writerow(['directory']+['file'])
-f2=csv.writer(open('filesMissingFromPrimaryDirectory'+datetime.now().strftime('%Y-%m-%d %H.%M.%S')+'.csv','w'))
-f2.writerow(['directory']+['file'])
+date = datetime.now().strftime('%Y-%m-%d %H.%M.%S')
+f = csv.writer(open('filesMissingFromSecondaryDirectory' + date + '.csv', 'w'))
+f.writerow(['directory'] + ['file'])
+f2 = csv.writer(open('filesMissingFromPrimaryDirectory' + date + '.csv', 'w'))
+f2.writerow(['directory'] + ['file'])
 primaryFilePathDict = {}
 for root, dirs, files in os.walk(primaryFilePath, topdown=True):
     for file in files:
@@ -36,13 +39,13 @@ for k, v in primaryFilePathDict.items():
     if k in secondaryFilePathDict:
         pass
     else:
-        f.writerow([v]+[k])
+        f.writerow([v] + [k])
 
 for k, v in secondaryFilePathDict.items():
     if k in primaryFilePathDict:
         pass
     else:
-        f2.writerow([v]+[k])
+        f2.writerow([v] + [k])
 
 elapsedTime = time.time() - startTime
 m, s = divmod(elapsedTime, 60)
